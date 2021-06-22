@@ -22,6 +22,9 @@ import torch.optim
 import apex
 from apex.parallel.LARC import LARC
 
+import socket
+print(f'Node name: {socket.gethostname()}')
+
 from src.utils import (
     bool_flag,
     initialize_exp,
@@ -123,6 +126,9 @@ parser.add_argument("--seed", type=int, default=31, help="seed")
 def main():
     global args
     args = parser.parse_args()
+
+    print(os.environ.get('MASTER_ADDR'))
+
     init_distributed_mode(args)
     fix_random_seeds(args.seed)
     logger, training_stats = initialize_exp(args, "epoch", "loss")
