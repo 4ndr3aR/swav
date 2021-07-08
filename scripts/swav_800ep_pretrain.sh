@@ -6,7 +6,7 @@
 #SBATCH --job-name=swav_800ep_pretrain
 #SBATCH --time=96:00:00
 #SBATCH --partition=gpu
-#SBATCH --exclude=node11
+#SBATCH --exclude=node08,node10,node11,node13
 
 # #module purge
 # #module load python36
@@ -15,21 +15,13 @@
 
 group_size=6
 
-#master_node=${SLURM_NODELIST:0:9}${SLURM_NODELIST:10:4}
-#dist_url="tcp://"
-#dist_url+=$master_node
-#dist_url+="node11"
-#dist_url+=:33300
-
 #DATASET_PATH="/home/ranieri/dataset/imagenette2/train"
 DATASET_PATH="/home/ranieri/dataset/surface-pattern-recognition/segmentation/GRAVpattSegmentation_v3COL+SI_unlabeled/training"
-EXPERIMENT_PATH="/home/ranieri/repos/swav/experiments"
+EXPERIMENT_PATH="/home/ranieri/repos/swav/experiments2"
 mkdir -p $EXPERIMENT_PATH
 
 echo $SLURM_NODELIST
 
-
-#var='node[13-14]' ; echo $var | awk -F\[ '{print $2}' | awk -F\- '{print $1}'
 dist_url="tcp://"
 dist_url+="node"
 dist_url+=`echo $SLURM_NODELIST | awk -F\[ '{print $2}' | awk -F\- '{print $1}' | awk -F\, '{print $1}'`
@@ -48,7 +40,7 @@ srun --output=${EXPERIMENT_PATH}/%j.out --error=${EXPERIMENT_PATH}/%j.err --labe
 --epsilon 0.05 \
 --sinkhorn_iterations 3 \
 --feat_dim 128 \
---nmb_prototypes 32 \
+--nmb_prototypes 64 \
 --queue_length 64 \
 --epochs 8000 \
 --batch_size 64 \
