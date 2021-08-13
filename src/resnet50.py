@@ -8,6 +8,7 @@
 import torch
 import torch.nn as nn
 
+import inspect
 
 def conv3x3(in_planes, out_planes, stride=1, groups=1, dilation=1):
     """3x3 convolution with padding"""
@@ -338,18 +339,26 @@ class MultiPrototypes(nn.Module):
 
 
 def resnet50(**kwargs):
+    thisfn = inspect.currentframe().f_code.co_name
+    print(f'Allocating a {thisfn}')
     return ResNet(Bottleneck, [3, 4, 6, 3], **kwargs)
 
 
 def resnet50w2(**kwargs):
+    thisfn = inspect.currentframe().f_code.co_name
+    print(f'Allocating a {thisfn}')
     return ResNet(Bottleneck, [3, 4, 6, 3], widen=2, **kwargs)
 
 
 def resnet50w4(**kwargs):
+    thisfn = inspect.currentframe().f_code.co_name
+    print(f'Allocating a {thisfn}')
     return ResNet(Bottleneck, [3, 4, 6, 3], widen=4, **kwargs)
 
 
 def resnet50w5(**kwargs):
+    thisfn = inspect.currentframe().f_code.co_name
+    print(f'Allocating a {thisfn}')
     return ResNet(Bottleneck, [3, 4, 6, 3], widen=5, **kwargs)
 
 '''
@@ -372,36 +381,52 @@ def resnet152(norm_layer=nn.BatchNorm2d):
 '''
 
 def resnet101(**kwargs):
+    thisfn = inspect.currentframe().f_code.co_name
+    print(f'Allocating a {thisfn}')
     return ResNet(Bottleneck, [3, 4, 23, 3], **kwargs)
 
 
 def resnet101w2(**kwargs):
+    thisfn = inspect.currentframe().f_code.co_name
+    print(f'Allocating a {thisfn}')
     return ResNet(Bottleneck, [3, 4, 23, 3], widen=2, **kwargs)
 
 
 def resnet101w4(**kwargs):
+    thisfn = inspect.currentframe().f_code.co_name
+    print(f'Allocating a {thisfn}')
     return ResNet(Bottleneck, [3, 4, 23, 3], widen=4, **kwargs)
 
 
 def resnet101w5(**kwargs):
+    thisfn = inspect.currentframe().f_code.co_name
+    print(f'Allocating a {thisfn}')
     return ResNet(Bottleneck, [3, 4, 23, 3], widen=5, **kwargs)
 
 
 
 
 def resnet152(**kwargs):
+    thisfn = inspect.currentframe().f_code.co_name
+    print(f'Allocating a {thisfn}')
     return ResNet(Bottleneck, [3, 8, 36, 3], **kwargs)
 
 
 def resnet152w2(**kwargs):
+    thisfn = inspect.currentframe().f_code.co_name
+    print(f'Allocating a {thisfn}')
     return ResNet(Bottleneck, [3, 8, 36, 3], widen=2, **kwargs)
 
 
 def resnet152w4(**kwargs):
+    thisfn = inspect.currentframe().f_code.co_name
+    print(f'Allocating a {thisfn}')
     return ResNet(Bottleneck, [3, 8, 36, 3], widen=4, **kwargs)
 
 
 def resnet152w5(**kwargs):
+    thisfn = inspect.currentframe().f_code.co_name
+    print(f'Allocating a {thisfn}')
     return ResNet(Bottleneck, [3, 8, 36, 3], widen=5, **kwargs)
 
 
