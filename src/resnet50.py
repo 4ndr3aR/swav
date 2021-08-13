@@ -351,3 +351,58 @@ def resnet50w4(**kwargs):
 
 def resnet50w5(**kwargs):
     return ResNet(Bottleneck, [3, 4, 6, 3], widen=5, **kwargs)
+
+'''
+@BACKBONE_REGISTRY.register()
+def resnet50(norm_layer=nn.BatchNorm2d):
+    num_block = [3, 4, 6, 3]
+    return ResNetV1(BottleneckV1b, num_block, norm_layer=norm_layer)
+
+
+@BACKBONE_REGISTRY.register()
+def resnet101(norm_layer=nn.BatchNorm2d):
+    num_block = [3, 4, 23, 3]
+    return ResNetV1(BottleneckV1b, num_block, norm_layer=norm_layer)
+
+
+@BACKBONE_REGISTRY.register()
+def resnet152(norm_layer=nn.BatchNorm2d):
+    num_block = [3, 8, 36, 3]
+    return ResNetV1(BottleneckV1b, num_block, norm_layer=norm_layer)
+'''
+
+def resnet101(**kwargs):
+    return ResNet(Bottleneck, [3, 4, 23, 3], **kwargs)
+
+
+def resnet101w2(**kwargs):
+    return ResNet(Bottleneck, [3, 4, 23, 3], widen=2, **kwargs)
+
+
+def resnet101w4(**kwargs):
+    return ResNet(Bottleneck, [3, 4, 23, 3], widen=4, **kwargs)
+
+
+def resnet101w5(**kwargs):
+    return ResNet(Bottleneck, [3, 4, 23, 3], widen=5, **kwargs)
+
+
+
+
+def resnet152(**kwargs):
+    return ResNet(Bottleneck, [3, 8, 36, 3], **kwargs)
+
+
+def resnet152w2(**kwargs):
+    return ResNet(Bottleneck, [3, 8, 36, 3], widen=2, **kwargs)
+
+
+def resnet152w4(**kwargs):
+    return ResNet(Bottleneck, [3, 8, 36, 3], widen=4, **kwargs)
+
+
+def resnet152w5(**kwargs):
+    return ResNet(Bottleneck, [3, 8, 36, 3], widen=5, **kwargs)
+
+
+
