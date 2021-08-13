@@ -4,9 +4,12 @@
 # This source code is licensed under the license found in the
 # LICENSE file in the root directory of this source tree.
 #
+
+import os
+#os.environ['CUDA_VISIBLE_DEVICES'] = '0,1'
+
 import argparse
 import math
-import os
 import shutil
 import time
 from logging import getLogger
@@ -198,6 +201,7 @@ def main():
         model,
         device_ids=[args.gpu_to_work_on]
     )
+    logger.info(f'nn.parallel.DistributedDataParallel() on GPU: {args.gpu_to_work_on}')
 
     # optionally resume from a checkpoint
     to_restore = {"epoch": 0}
